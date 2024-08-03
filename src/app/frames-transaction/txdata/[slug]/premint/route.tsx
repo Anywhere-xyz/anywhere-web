@@ -2,10 +2,10 @@ import { TransactionTargetResponse } from "frames.js";
 import { getFrameMessage } from "frames.js/next/server";
 import { NextRequest, NextResponse } from "next/server";
 
-import { findFrameById, findFrameBySlug } from "@/utils/frame";
-import { getCollectiveById } from "@/utils/collective";
+import { findFrameById, findFrameBySlug } from "@/database-crud/frame";
+import { getCollectiveById } from "@/database-crud/collective";
 import { erc20PreMint, mint } from "@/utils";
-import { findUserById } from "@/utils/user";
+import { findUserById } from "@/database-crud/user";
 
 export async function POST(
   req: NextRequest

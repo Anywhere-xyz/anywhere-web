@@ -1,4 +1,4 @@
-This is a Collective Frames builder project from Liquality.
+Anywhere.xyz meetup today!
 
 ## Getting Started
 
