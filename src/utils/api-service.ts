@@ -5,22 +5,19 @@ export const ApiService = {
     const { data } = await axios.post(`/api/user/`, authData);
     return data;
   },
-  getFrameById: async function (frameId: string) {
-    const { data } = await axios.get(`/api/create/${frameId}`);
-    return data;
-  },
-  fetchFramesByCurrentUser: async function () {
-    const { data } = await axios.get(`/api/create`);
+
+  getMeetups: async function () {
+    const { data } = await axios.get(`/api/meetup/`);
     return data;
   },
 
-  getUserByFid: async function (fid: string) {
-    const { data } = await axios.get(`/api/user/${fid}`);
+  getMeetupsByUserId: async function (userId: string) {
+    const { data } = await axios.get(`/api/meetup/${userId}`);
     return data;
   },
 
-  getFramesPerCollective: async function () {
-    const { data } = await axios.get(`/api/leaderboard`);
+  createMeetup: async function (meetup: any) {
+    const { data } = await axios.post(`/api/meetup`, meetup);
     return data;
   },
 };

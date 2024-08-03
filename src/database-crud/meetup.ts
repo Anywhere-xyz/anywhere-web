@@ -1,10 +1,8 @@
-//CRUD operations goes here
-
-//This file should handle all data calls to the "meetup" table in DB
-
-import { db, frame } from "@/db";
+import { db, frame, meetup } from "@/db";
 import { sql } from "drizzle-orm";
 
+//CRUD operations goes here
+//This file should handle all data calls to the "meetup" table in DB
 export async function createMeetup(name: string) {
   if (name) {
     return {
@@ -28,13 +26,13 @@ export const findMeetupById = async (frameId: number) => {
   }
 };
 
-export const findMeetupBySlug = async (slug: string) => {
-  const existingFrame = await db
+export const getMeetupByUserId = async (userId: number) => {
+  const meetups = await db
     .select()
-    .from(frame)
-    .where(sql`${frame.slug} = ${slug}`);
-  if (existingFrame[0]) {
-    return existingFrame[0];
+    .from(meetup)
+    .where(sql`${meetup.createdBy} = ${userId}`);
+  if (meetups) {
+    return meetups;
   } else {
     return null;
   }

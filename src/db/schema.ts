@@ -20,7 +20,7 @@ export const meetup = pgTable("meetup", {
   escrowAddress: varchar("escrow_address", { length: 256 }).notNull(),
   createdBy: integer("created_by").references(() => user.id),
   createdAt: timestamp("created_at").defaultNow(),
-  expiresAt: timestamp("expires_at"),
+  date: timestamp("date"),
 });
 
 export const frame = pgTable("frame", {
