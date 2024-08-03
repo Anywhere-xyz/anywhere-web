@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS "meetup" (
 	"escrow_address" varchar(256) NOT NULL,
 	"created_by" integer,
 	"created_at" timestamp DEFAULT now(),
-	"expires_at" timestamp
+	"date" timestamp
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "user" (

@@ -10,6 +10,8 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
   const [image, setImage] = useState<File | null>(null);
 
   const [date, setDate] = useState("");
@@ -90,6 +92,34 @@ export default function Dashboard() {
             id="image"
             accept="image/*"
             onChange={(e) => setImage(e.target.files?.[0] || null)}
+            required
+            className="w-full p-2 border rounded text-black"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="country" className="block mb-1">
+            Country
+          </label>
+          <input
+            type="text"
+            id="country"
+            value={country}
+            onChange={(e) => setCountry(e.target.value)}
+            required
+            className="w-full p-2 border rounded text-black"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="city" className="block mb-1">
+            City
+          </label>
+          <input
+            type="text"
+            id="city"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
             required
             className="w-full p-2 border rounded text-black"
           />

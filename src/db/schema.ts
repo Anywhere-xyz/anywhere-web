@@ -21,6 +21,8 @@ export const meetup = pgTable("meetup", {
   createdBy: integer("created_by").references(() => user.id),
   createdAt: timestamp("created_at").defaultNow(),
   date: timestamp("date"),
+  country: varchar("country", { length: 100 }),
+  city: varchar("city", { length: 100 }),
 });
 
 export const frame = pgTable("frame", {
