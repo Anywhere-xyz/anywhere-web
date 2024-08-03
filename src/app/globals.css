@@ -26,8 +26,8 @@ body {
   height: 100%;
   padding: 0 !important;
   margin: 0 !important;
-  color: white;
-  background: #371a56;
+  color: black;
+  background: white;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -59,7 +59,7 @@ body {
 }
 
 .main-banner {
-  background-image: url('/main-bg.svg');
+  background-image: url("/main-bg.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

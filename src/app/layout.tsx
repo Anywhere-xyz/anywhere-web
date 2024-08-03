@@ -33,7 +33,7 @@ export default function RootLayout({
                 Anywhere.xyz
               </h2>
               <h4 className="text-center font-bold text-xl leading-normal tracking-tight uppercase">
-                Meetup together. Earn together.
+                Crowdsource your next meetup
               </h4>
               <p className="mt-3 text-center mb-5">
                 Create and share a meetup. Everyone can join and earn.
@@ -43,7 +43,7 @@ export default function RootLayout({
               {children}
             </div>
           </main>
-          <Footer></Footer>
+          {/*         <Footer></Footer> */}
           <ToastContainer />
         </Web3ModalProvider>
       </body>

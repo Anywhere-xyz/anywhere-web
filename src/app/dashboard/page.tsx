@@ -41,10 +41,23 @@ export default function Dashboard() {
         {userMeetups?.length > 0 ? (
           userMeetups?.map((meetup: any) => (
             <div
-              className="flex flex-col bg-white text-black mt-3"
+              className="grid grid-cols-3 gap-2 text-black mt-3"
               key={meetup.id}
             >
-              {meetup.name}
+              <div className="relative">
+                <img
+                  src={meetup.image}
+                  alt={meetup.name}
+                  className=" object-cover rounded-lg w-[70px] h-[70px]"
+                />
+              </div>
+              <div className="flex flex-col">
+                <h3 className="text-xl font-semibold">{meetup.name}</h3>
+                <p className="text-sm">{meetup.description}</p>
+                <p className="text-sm">
+                  Date: {new Date(meetup.date).toLocaleDateString()}
+                </p>
+              </div>
             </div>
           ))
         ) : (
