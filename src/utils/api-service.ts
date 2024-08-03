@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const ApiService = {
+export const ApiService = {
   authenticateUser: async function (authData: any) {
     const { data } = await axios.post(`/api/user/`, authData);
     return data;
@@ -24,4 +24,3 @@ const ApiService = {
     return data;
   },
 };
-export default ApiService;

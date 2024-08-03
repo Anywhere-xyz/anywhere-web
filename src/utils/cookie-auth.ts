@@ -1,21 +1,19 @@
 import Cookies from "universal-cookie";
-export const COOKIE_SIGNER_UUID = 'neynar_signer_uuid';
-export const COOKIE_USER_FID = 'user_fid';
-const cookies = new Cookies()
+export const USER_ID = "user_id";
+const cookies = new Cookies();
 
 export class Auth {
-    static removeUser() {
-        cookies.remove(COOKIE_USER_FID)
-        return true
-    }
+  static removeUser() {
+    cookies.remove(USER_ID);
+    return true;
+  }
 
-    static setUser(userFid?: number) {
-        cookies.set(COOKIE_USER_FID, userFid)
-        return true
-    }
+  static setUser(userId?: number) {
+    cookies.set(USER_ID, userId);
+    return true;
+  }
 
-    static get fid() {
-        return cookies.get(COOKIE_USER_FID)
-
-    }
+  static get id() {
+    return cookies.get(USER_ID);
+  }
 }

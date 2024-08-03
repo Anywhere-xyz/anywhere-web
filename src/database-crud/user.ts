@@ -1,11 +1,11 @@
 import { db, user } from "@/db";
 import { sql } from "drizzle-orm";
 
-export const findUserByFid = async (userFid: number) => {
+export const findUserById = async (id: number) => {
   const existingUser = await db
     .select()
     .from(user)
-    .where(sql`${user.fid} = ${userFid}`);
+    .where(sql`${user.id} = ${id}`);
   if (existingUser[0]) {
     return existingUser[0];
   } else {
@@ -13,11 +13,11 @@ export const findUserByFid = async (userFid: number) => {
   }
 };
 
-export const findUserById = async (userId: number) => {
+export const findUserByAddress = async (walletAddress: number) => {
   const existingUser = await db
     .select()
     .from(user)
-    .where(sql`${user.id} = ${userId}`);
+    .where(sql`${user.walletAddress} = ${walletAddress}`);
   if (existingUser[0]) {
     return existingUser[0];
   } else {

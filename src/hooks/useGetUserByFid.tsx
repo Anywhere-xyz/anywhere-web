@@ -8,9 +8,9 @@ export function useGetUserByFid() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (Auth.fid && !user) {
+        if (Auth.id && !user) {
           setLoading(true);
-          const _user = await ApiService.getUserByFid(Auth.fid);
+          const _user = await ApiService.getUserByFid(Auth.id);
 
           setUser(_user);
           setLoading(false);

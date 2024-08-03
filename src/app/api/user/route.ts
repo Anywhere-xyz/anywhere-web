@@ -1,20 +1,20 @@
+import { findUserByAddress } from "@/database-crud/user";
 import { db, user } from "@/db";
-import { findUserById } from "@/database-crud/user";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {
     const req = await request.json();
-    const existingUser = await findUserById(req.fid);
+    console.log(req, "req inside 2", req.address);
+    const walletAddress = req.address;
+    const existingUser = await findUserByAddress(walletAddress);
     if (existingUser) {
       return NextResponse.json(existingUser);
     } else {
-      const walletAddress = await getAddrById(req.fid);
       if (walletAddress) {
         const newUser = await db
           .insert(user)
           .values({
-            fid: req.fid,
             walletAddress: walletAddress,
           })
           .returning();

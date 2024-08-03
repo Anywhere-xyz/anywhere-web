@@ -36,6 +36,13 @@
       "when": 1712920100320,
       "tag": "0004_deep_golden_guardian",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1722698800021,
+      "tag": "0005_purple_lionheart",
+      "breakpoints": true
     }
   ]
 }

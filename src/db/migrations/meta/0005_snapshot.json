@@ -1,11 +1,11 @@
 {
-  "id": "9b93a95f-ccb6-4a3d-9c45-c605fed2aabd",
+  "id": "3af33e31-cfeb-40dc-860f-c74016576b7d",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
   "tables": {
-    "collective": {
-      "name": "collective",
+    "frame": {
+      "name": "frame",
       "schema": "",
       "columns": {
         "id": {
@@ -14,35 +14,23 @@
           "primaryKey": true,
           "notNull": true
         },
-        "name": {
-          "name": "name",
+        "frame_img_url": {
+          "name": "frame_img_url",
           "type": "varchar(256)",
           "primaryKey": false,
           "notNull": true
         },
-        "c_address": {
-          "name": "c_address",
+        "price": {
+          "name": "price",
           "type": "varchar(256)",
           "primaryKey": false,
           "notNull": true
         },
-        "c_wallet": {
-          "name": "c_wallet",
-          "type": "varchar(256)",
+        "meetup_id": {
+          "name": "meetup_id",
+          "type": "integer",
           "primaryKey": false,
-          "notNull": true
-        },
-        "c_pool": {
-          "name": "c_pool",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "honey_pot": {
-          "name": "honey_pot",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "created_at": {
           "name": "created_at",
@@ -50,29 +38,29 @@
           "primaryKey": false,
           "notNull": false,
           "default": "now()"
-        },
-        "expiresAt": {
-          "name": "expiresAt",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": false
         }
       },
       "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {
-        "collective_name_unique": {
-          "name": "collective_name_unique",
-          "nullsNotDistinct": false,
-          "columns": [
-            "name"
-          ]
+      "foreignKeys": {
+        "frame_meetup_id_meetup_id_fk": {
+          "name": "frame_meetup_id_meetup_id_fk",
+          "tableFrom": "frame",
+          "tableTo": "meetup",
+          "columnsFrom": [
+            "meetup_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
         }
-      }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
     },
-    "frame": {
-      "name": "frame",
+    "meetup": {
+      "name": "meetup",
       "schema": "",
       "columns": {
         "id": {
@@ -91,55 +79,19 @@
           "name": "description",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
-        "slug": {
-          "name": "slug",
+        "image": {
+          "name": "image",
           "type": "varchar(256)",
           "primaryKey": false,
           "notNull": true
         },
-        "image_url": {
-          "name": "image_url",
+        "escrow_address": {
+          "name": "escrow_address",
           "type": "varchar(256)",
           "primaryKey": false,
           "notNull": true
-        },
-        "metadata_url": {
-          "name": "metadata_url",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "price_in_eth": {
-          "name": "price_in_eth",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "payment_currency": {
-          "name": "payment_currency",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "token_id": {
-          "name": "token_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "nft_token_address": {
-          "name": "nft_token_address",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "collective_id": {
-          "name": "collective_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false
         },
         "created_by": {
           "name": "created_by",
@@ -153,26 +105,19 @@
           "primaryKey": false,
           "notNull": false,
           "default": "now()"
+        },
+        "expires_at": {
+          "name": "expires_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "frame_collective_id_collective_id_fk": {
-          "name": "frame_collective_id_collective_id_fk",
-          "tableFrom": "frame",
-          "tableTo": "collective",
-          "columnsFrom": [
-            "collective_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        },
-        "frame_created_by_user_id_fk": {
-          "name": "frame_created_by_user_id_fk",
-          "tableFrom": "frame",
+        "meetup_created_by_user_id_fk": {
+          "name": "meetup_created_by_user_id_fk",
+          "tableFrom": "meetup",
           "tableTo": "user",
           "columnsFrom": [
             "created_by"
